@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonLoc"
         android:text="Check Location Permission"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"/>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewAtas"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
