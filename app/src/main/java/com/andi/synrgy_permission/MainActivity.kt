@@ -1,19 +1,15 @@
 package com.andi.synrgy_permission
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.pm.PackageManager
-import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.andi.synrgy_permission.databinding.ActivityMainBinding
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.tasks.OnSuccessListener
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getLoc(){
+    private fun getLoc(){
         val fusedLocation = LocationServices.getFusedLocationProviderClient(this)
 
         if (ActivityCompat.checkSelfPermission(
@@ -54,14 +50,11 @@ class MainActivity : AppCompatActivity() {
             Log.d("permission", "Location Permission Denied")
         }
 
-        fusedLocation.lastLocation.addOnSuccessListener(this, object : OnSuccessListener<Location>{
-            override fun onSuccess(location: Location?) {
-                // Do it all with location
-                Log.d("Location", "Lat : ${location?.latitude} Long : ${location?.longitude}")
-                // Display in Toast
-                Toast.makeText(this@MainActivity, "Longitude dan Latitude didapatkan ${location?.longitude}, ${location?.latitude} . Silakan Cek Logcat", Toast.LENGTH_LONG).show()
-            }
-
-        })
+        fusedLocation.lastLocation.addOnSuccessListener(this
+        ) { location -> // Do it all with location
+            Log.d("Location", "Lat : ${location?.latitude} Long : ${location?.longitude}")
+            // Display in Toast
+            Toast.makeText(this@MainActivity, "Longitude dan Latitude didapatkan ${location?.longitude}, ${location?.latitude} . Silakan Cek Logcat", Toast.LENGTH_LONG).show()
+        }
     }
 }
